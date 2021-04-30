@@ -1,0 +1,130 @@
+Mercancia:
+    type: entity
+    table: mercancia
+    indexes:
+        IDX_1FF8C8436555E543:
+            columns:
+                - miRelacionada
+        IDX_1FF8C8439FF32DC0:
+            columns:
+                - arancel
+        IDX_1FF8C843A01B5DE:
+            columns:
+                - tarifa
+        IDX_1FF8C843AEA271E1:
+            columns:
+                - bulto
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fechacreacion:
+            type: datetime
+            nullable: false
+            column: fechaCreacion
+        descripcion:
+            type: text
+            nullable: false
+            length: 0
+            options:
+                fixed: false
+        cantidad:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        volumenm3:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: volumenM3
+        pesokg:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: pesoKg
+        pesolb:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: pesoLb
+        relacion:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        alturacm:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: alturaCm
+        anchocm:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: anchoCm
+        profundidadcm:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: profundidadCm
+        tarifaalternativa:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+            column: tarifaAlternativa
+    manyToOne:
+        mirelacionada:
+            targetEntity: Mercancia
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                miRelacionada:
+                    referencedColumnName: id
+            orphanRemoval: false
+        arancel:
+            targetEntity: Arancel
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                arancel:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tarifa:
+            targetEntity: Tarifa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tarifa:
+                    referencedColumnName: id
+            orphanRemoval: false
+        bulto:
+            targetEntity: Bulto
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                bulto:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,111 @@
+User:
+    type: entity
+    table: user
+    indexes:
+        IDX_2DA1797757698A6A:
+            columns:
+                - role
+        IDX_2DA179778D940019:
+            columns:
+                - workspace
+    uniqueConstraints:
+        UNIQ_2DA17977F85E0677:
+            columns:
+                - username
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        firstname:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: firstName
+        lastname:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: lastName
+        password:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        salt:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        phone:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        photo:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        letra:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        activo:
+            type: boolean
+            nullable: false
+        firma:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+    manyToOne:
+        role:
+            targetEntity: Role
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                role:
+                    referencedColumnName: id
+            orphanRemoval: false
+        workspace:
+            targetEntity: Workspace
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                workspace:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

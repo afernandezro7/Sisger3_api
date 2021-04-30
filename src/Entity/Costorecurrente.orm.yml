@@ -1,0 +1,65 @@
+Costorecurrente:
+    type: entity
+    table: costorecurrente
+    uniqueConstraints:
+        UNIQ_83A1FC12F7CD0BAD:
+            columns:
+                - idEgreso
+    id:
+        id:
+            associationKey: true
+    fields:
+        paguea:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: pagueA
+        detalles:
+            type: text
+            nullable: false
+            length: 16777215
+            options:
+                fixed: false
+    oneToOne:
+        id:
+            targetEntity: Recibo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToOne:
+        idegreso:
+            targetEntity: Idegreso
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idEgreso:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        inventario:
+            targetEntity: Inventario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: costorecurrente
+            joinTable:
+                name: costorecurrente_inventario
+                joinColumns:
+                    -
+                        name: costorecurrente_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: inventario_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

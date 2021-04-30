@@ -1,0 +1,85 @@
+Banking:
+    type: entity
+    table: banking
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        enabled:
+            type: boolean
+            nullable: false
+        createdat:
+            type: datetime
+            nullable: false
+            column: createdAt
+        type:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        balance:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        initbalance:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: initBalance
+        discr:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+    manyToMany:
+        paymentmethod:
+            targetEntity: Paymentmethod
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: banking
+            joinTable:
+                name: metodopago_banking
+                joinColumns:
+                    -
+                        name: banking_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: paymentmethod_id
+                        referencedColumnName: id
+            orderBy: null
+        workspace:
+            targetEntity: Workspace
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: banking
+            joinTable:
+                name: workspace_banking
+                joinColumns:
+                    -
+                        name: banking_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: workspace_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

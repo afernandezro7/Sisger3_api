@@ -1,0 +1,64 @@
+Ajuste:
+    type: entity
+    table: ajuste
+    indexes:
+        IDX_DA99B804E766A51E:
+            columns:
+                - banking
+    uniqueConstraints:
+        UNIQ_DA99B804C949A274:
+            columns:
+                - entrada
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fecha:
+            type: datetime
+            nullable: false
+        importe:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        concepto:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        sisgercode:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: sisgerCode
+    manyToOne:
+        entrada:
+            targetEntity: Bankingentry
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                entrada:
+                    referencedColumnName: id
+            orphanRemoval: false
+        banking:
+            targetEntity: Banking
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                banking:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,13 @@
+Idegreso:
+    type: entity
+    table: idegreso
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    lifecycleCallbacks: {  }

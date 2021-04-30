@@ -1,0 +1,110 @@
+Client:
+    type: entity
+    table: client
+    indexes:
+        IDX_C0E801638D93D649:
+            columns:
+                - user
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        firstname:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: firstName
+        lastname:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: lastName
+        phones:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        createdat:
+            type: datetime
+            nullable: true
+            column: createdAt
+        dni:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        passport:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        address:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        municipality:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        province:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        country:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        cell:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+    manyToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        reply:
+            targetEntity: Reply
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: client
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

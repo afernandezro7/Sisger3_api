@@ -1,0 +1,41 @@
+Bulto:
+    type: entity
+    table: bulto
+    indexes:
+        IDX_6F635EE5648388D0:
+            columns:
+                - concepto
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        sisgercode:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: sisgerCode
+        indice:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+    manyToOne:
+        concepto:
+            targetEntity: Concepto
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                concepto:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

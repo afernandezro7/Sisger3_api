@@ -1,0 +1,18 @@
+Card:
+    type: entity
+    table: card
+    id:
+        id:
+            associationKey: true
+    oneToOne:
+        id:
+            targetEntity: Banking
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,117 @@
+Contenedor:
+    type: entity
+    table: contenedor
+    indexes:
+        IDX_A9E888616EC83E05:
+            columns:
+                - mes
+        IDX_A9E88861702D1D47:
+            columns:
+                - tipo
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        codigo:
+            type: text
+            nullable: true
+            length: 0
+            options:
+                fixed: false
+        sello:
+            type: text
+            nullable: true
+            length: 0
+            options:
+                fixed: false
+        estado:
+            type: text
+            nullable: false
+            length: 0
+            options:
+                fixed: false
+        volumenm3:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: volumenM3
+        maxpesokg:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: maxPesoKg
+        motonave:
+            type: text
+            nullable: true
+            length: 0
+            options:
+                fixed: false
+        mbl:
+            type: text
+            nullable: true
+            length: 0
+            options:
+                fixed: false
+        puertosalida:
+            type: text
+            nullable: true
+            length: 0
+            options:
+                fixed: false
+            column: puertoSalida
+        puertoentrada:
+            type: text
+            nullable: true
+            length: 0
+            options:
+                fixed: false
+            column: puertoEntrada
+        fechaentrada:
+            type: datetime
+            nullable: true
+            column: fechaEntrada
+        fechasalida:
+            type: datetime
+            nullable: true
+            column: fechaSalida
+        indice:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        indiceanual:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: indiceAnual
+    manyToOne:
+        mes:
+            targetEntity: Mes
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                mes:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tipo:
+            targetEntity: Tipocontenedor
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

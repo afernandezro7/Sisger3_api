@@ -1,0 +1,152 @@
+Reply:
+    type: entity
+    table: reply
+    indexes:
+        IDX_3C69E9E4F5E3EAD7:
+            columns:
+                - leader
+        IDX_3C69E9E48D93D649:
+            columns:
+                - user
+        IDX_3C69E9E48D940019:
+            columns:
+                - workspace
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        begindate:
+            type: datetime
+            nullable: false
+            column: beginDate
+        finishdate:
+            type: datetime
+            nullable: false
+            column: finishDate
+        pax:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        observations:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        price:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        sisgercode:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: sisgerCode
+        createdat:
+            type: datetime
+            nullable: false
+            column: createdAt
+        month:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        year:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+    manyToOne:
+        user:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user:
+                    referencedColumnName: id
+            orphanRemoval: false
+        workspace:
+            targetEntity: Workspace
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                workspace:
+                    referencedColumnName: id
+            orphanRemoval: false
+        leader:
+            targetEntity: Client
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                leader:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        agency:
+            targetEntity: Agency
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: reply
+            joinTable:
+                name: reply_agency
+                joinColumns:
+                    -
+                        name: reply_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: agency_id
+                        referencedColumnName: id
+            orderBy: null
+        client:
+            targetEntity: Client
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: reply
+            joinTable:
+                name: reply_client
+                joinColumns:
+                    -
+                        name: reply_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: client_id
+                        referencedColumnName: id
+            orderBy: null
+        service:
+            targetEntity: Service
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: reply
+            joinTable:
+                name: reply_service
+                joinColumns:
+                    -
+                        name: reply_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: service_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

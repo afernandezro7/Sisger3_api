@@ -1,0 +1,101 @@
+Concepto:
+    type: entity
+    table: concepto
+    indexes:
+        IDX_9DF5EA868F8E7CD:
+            columns:
+                - consignado
+        expediente:
+            columns:
+                - expediente
+        IDX_9DF5EA8651A5ACA4:
+            columns:
+                - remitente
+        IDX_9DF5EA86E6B58BB1:
+            columns:
+                - contenedor
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fechacreacion:
+            type: datetime
+            nullable: false
+            column: fechaCreacion
+        tipo:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        sisgercode:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: sisgerCode
+        discr:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        estado:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        fechahbl:
+            type: datetime
+            nullable: true
+            column: fechaHBL
+    manyToOne:
+        expediente:
+            targetEntity: Reply
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                expediente:
+                    referencedColumnName: id
+            orphanRemoval: false
+        remitente:
+            targetEntity: Client
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                remitente:
+                    referencedColumnName: id
+            orphanRemoval: false
+        consignado:
+            targetEntity: Client
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                consignado:
+                    referencedColumnName: id
+            orphanRemoval: false
+        contenedor:
+            targetEntity: Contenedor
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                contenedor:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

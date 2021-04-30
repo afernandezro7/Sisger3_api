@@ -1,0 +1,124 @@
+Recibo:
+    type: entity
+    table: recibo
+    indexes:
+        IDX_45052DCC2265B05D:
+            columns:
+                - usuario
+        IDX_45052DCCD59CA413:
+            columns:
+                - expediente
+        IDX_45052DCC792D02F7:
+            columns:
+                - metodoPago
+        IDX_45052DCC8D940019:
+            columns:
+                - workspace
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fecha:
+            type: datetime
+            nullable: false
+        importe:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        suma:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        sisgercode:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: sisgerCode
+        activo:
+            type: boolean
+            nullable: true
+        tipo:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        refexpediente:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: refExpediente
+        discr:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        motivocancelacion:
+            type: text
+            nullable: true
+            length: 0
+            options:
+                fixed: false
+            column: motivoCancelacion
+        creacion:
+            type: datetime
+            nullable: false
+        firmado:
+            type: boolean
+            nullable: true
+    manyToOne:
+        usuario:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario:
+                    referencedColumnName: id
+            orphanRemoval: false
+        metodopago:
+            targetEntity: Paymentmethod
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                metodoPago:
+                    referencedColumnName: id
+            orphanRemoval: false
+        workspace:
+            targetEntity: Workspace
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                workspace:
+                    referencedColumnName: id
+            orphanRemoval: false
+        expediente:
+            targetEntity: Reply
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                expediente:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

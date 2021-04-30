@@ -1,0 +1,70 @@
+Bankingentry:
+    type: entity
+    table: bankingentry
+    indexes:
+        IDX_AD17BE1E766A51E:
+            columns:
+                - banking
+    uniqueConstraints:
+        UNIQ_AD17BE142A928FA:
+            columns:
+                - recibo
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        date:
+            type: datetime
+            nullable: false
+        details:
+            type: text
+            nullable: false
+            length: 0
+            options:
+                fixed: false
+        credit:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        debit:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        balance:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        activo:
+            type: boolean
+            nullable: true
+    manyToOne:
+        recibo:
+            targetEntity: Recibo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                recibo:
+                    referencedColumnName: id
+            orphanRemoval: false
+        banking:
+            targetEntity: Banking
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                banking:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

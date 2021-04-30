@@ -1,0 +1,29 @@
+Agency:
+    type: entity
+    table: agency
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+    manyToMany:
+        reply:
+            targetEntity: Reply
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: agency
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }
