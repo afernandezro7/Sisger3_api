@@ -8,10 +8,13 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-
+    /**
+     * @Route("/", name="default_home", methods={"GET"})
+     */
     public function index(Request $request): JsonResponse
     {
         //TODO: implement Token validation and get workspace of user

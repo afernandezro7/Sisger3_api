@@ -1,7 +1,7 @@
-index:
-   path: /
-   controller: App\Controller\DefaultController::index
-   methods: [GET, POST]
+# index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+#    methods: [GET, POST]
 
 # _errors:
 #     resource: '@FrameworkBundle/Resources/config/routing/errors.xml'
