@@ -131,7 +131,7 @@ class DefaultController extends AbstractController
         $customers = $em->getRepository(Client::class)->findBusquedaSimple($text);
         $operaciones = $em->getRepository(Concepto::class)->findBusquedaSimple($text);
 
-        var_dump($text);
+        var_dump($customers);
         die();
 
     }

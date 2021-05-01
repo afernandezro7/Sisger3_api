@@ -36,7 +36,7 @@ class ConceptoRepository extends ServiceEntityRepository
         $value = '%' . $text . '%';
 
         $em = $this->getEntityManager();
-        $query = $em->createQuery("SELECT c, e, n FROM BackendBundle:Concepto c JOIN c.consignado e JOIN c.contenedor n WHERE c.sisgerCode LIKE :query OR CONCAT(e.firstName, ' ', e.lastName) LIKE :query OR e.dni LIKE :query OR e.passport LIKE :query ORDER BY c.fechaCreacion DESC");
+        $query = $em->createQuery("SELECT c, e, n FROM App\Entity\Concepto c JOIN c.consignado e JOIN c.contenedor n WHERE c.sisgerCode LIKE :query OR CONCAT(e.firstName, ' ', e.lastName) LIKE :query OR e.dni LIKE :query OR e.passport LIKE :query ORDER BY c.fechaCreacion DESC");
         $query->setParameter('query', $value);
         /*$query->setMaxResults(1000);*/
         return $query->getResult();

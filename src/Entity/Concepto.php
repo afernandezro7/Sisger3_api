@@ -26,7 +26,7 @@ class Concepto
      *
      * @ORM\Column(name="fechaCreacion", type="datetime", nullable=false)
      */
-    private $fechacreacion;
+    private $fechaCreacion;
 
     /**
      * @var string
@@ -40,7 +40,7 @@ class Concepto
      *
      * @ORM\Column(name="sisgerCode", type="string", length=255, nullable=true)
      */
-    private $sisgercode;
+    private $sisgerCode;
 
     /**
      * @var string
@@ -61,7 +61,7 @@ class Concepto
      *
      * @ORM\Column(name="fechaHBL", type="datetime", nullable=true)
      */
-    private $fechahbl;
+    private $fechaHBL;
 
     /**
      * @var \Reply
@@ -108,14 +108,14 @@ class Concepto
         return $this->id;
     }
 
-    public function getFechacreacion(): ?\DateTimeInterface
+    public function getFechaCreacion(): ?\DateTimeInterface
     {
-        return $this->fechacreacion;
+        return $this->fechaCreacion;
     }
 
-    public function setFechacreacion(\DateTimeInterface $fechacreacion): self
+    public function setFechaCreacion(\DateTimeInterface $fechaCreacion): self
     {
-        $this->fechacreacion = $fechacreacion;
+        $this->fechaCreacion = $fechaCreacion;
 
         return $this;
     }
@@ -132,14 +132,14 @@ class Concepto
         return $this;
     }
 
-    public function getSisgercode(): ?string
+    public function getSisgerCode(): ?string
     {
-        return $this->sisgercode;
+        return $this->sisgerCode;
     }
 
-    public function setSisgercode(?string $sisgercode): self
+    public function setSisgerCode(?string $sisgerCode): self
     {
-        $this->sisgercode = $sisgercode;
+        $this->sisgerCode = $sisgerCode;
 
         return $this;
     }
@@ -168,14 +168,14 @@ class Concepto
         return $this;
     }
 
-    public function getFechahbl(): ?\DateTimeInterface
+    public function getFechaHBL(): ?\DateTimeInterface
     {
-        return $this->fechahbl;
+        return $this->fechaHBL;
     }
 
-    public function setFechahbl(?\DateTimeInterface $fechahbl): self
+    public function setFechaHBL(?\DateTimeInterface $fechaHBL): self
     {
-        $this->fechahbl = $fechahbl;
+        $this->fechaHBL = $fechaHBL;
 
         return $this;
     }

@@ -76,7 +76,19 @@ class ClientRepository extends ServiceEntityRepository
 
 
         $em = $this->getEntityManager();
-        $query = $em->createQuery("SELECT r FROM App\Entity\Client r WHERE (r.firstName LIKE :query OR r.firstName LIKE :query1 OR r.firstName LIKE :query2 OR r.lastName LIKE :query OR r.lastName LIKE :query1 OR r.lastName LIKE :query2 OR CONCAT(r.firstName, ' ', r.lastName) LIKE :query OR CONCAT(r.firstName, ' ', r.lastName) LIKE :query1 OR CONCAT(r.firstName, ' ', r.lastName) LIKE :query2) ORDER BY r.createdAt DESC");
+        $query = $em->createQuery(
+            "SELECT r FROM App\Entity\Client r ".
+            "WHERE (r.firstName LIKE :query OR ".
+                   "r.firstName LIKE :query1 OR ". 
+                   "r.firstName LIKE :query2 OR  ".
+                   "r.lastName LIKE :query OR  ".
+                   "r.lastName LIKE :query1 OR  ".
+                   "r.lastName LIKE :query2 OR  ".
+                   "CONCAT(r.firstName, ' ', r.lastName) LIKE :query OR  ".
+                   "CONCAT(r.firstName, ' ', r.lastName) LIKE :query1 OR  ".
+                   "CONCAT(r.firstName, ' ', r.lastName) LIKE :query2)  ".
+            "ORDER BY r.createdAt DESC"
+        );
         $query->setParameter('query', $text);
         $query->setParameter('query1', $text1);
         $query->setParameter('query2', $text2);

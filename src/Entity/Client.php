@@ -28,14 +28,14 @@ class Client
      *
      * @ORM\Column(name="firstName", type="string", length=255, nullable=false)
      */
-    private $firstname;
+    private $firstName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255, nullable=false)
      */
-    private $lastname;
+    private $lastName;
 
     /**
      * @var string|null
@@ -56,7 +56,7 @@ class Client
      *
      * @ORM\Column(name="createdAt", type="datetime", nullable=true)
      */
-    private $createdat;
+    private $createdAt;
 
     /**
      * @var string|null
@@ -137,26 +137,26 @@ class Client
         return $this->id;
     }
 
-    public function getFirstname(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->firstname;
+        return $this->firstName;
     }
 
-    public function setFirstname(string $firstname): self
+    public function setFirstName(string $firstName): self
     {
-        $this->firstname = $firstname;
+        $this->firstName = $firstName;
 
         return $this;
     }
 
-    public function getLastname(): ?string
+    public function getLastName(): ?string
     {
-        return $this->lastname;
+        return $this->lastName;
     }
 
-    public function setLastname(string $lastname): self
+    public function setLastName(string $lastName): self
     {
-        $this->lastname = $lastname;
+        $this->lastName = $lastName;
 
         return $this;
     }
@@ -185,14 +185,14 @@ class Client
         return $this;
     }
 
-    public function getCreatedat(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->createdat;
+        return $this->createdAt;
     }
 
-    public function setCreatedat(?\DateTimeInterface $createdat): self
+    public function setCreatedAt(?\DateTimeInterface $createdAt): self
     {
-        $this->createdat = $createdat;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
