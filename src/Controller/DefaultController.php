@@ -2,13 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Entity\Client;
 use App\Entity\Recibo;
+use App\Entity\Concepto;
 use App\Entity\Workspace;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
@@ -111,5 +114,25 @@ class DefaultController extends AbstractController
             'balance_general_faceta' => $balance_general_faceta
         ]);
         return $response;
+    }
+    /**
+     * @Route("/executeSearch", name="default_executeSearch", methods={"GET"})
+     */
+    public function executeSearch(Request $request, EntityManagerInterface $em)
+    {
+        //TODO: implement Token validation and get user
+        $user = $this->getDoctrine()->getRepository(User::class)->findOneBy(array('id' => 1));
+        $text = $request->query->get('criteria');
+
+        $replies = array();
+        $receipes = array();
+        $vouchers = array();
+
+        $customers = $em->getRepository(Client::class)->findBusquedaSimple($text);
+        $operaciones = $em->getRepository(Concepto::class)->findBusquedaSimple($text);
+
+        var_dump($text);
+        die();
+
     }
 }
